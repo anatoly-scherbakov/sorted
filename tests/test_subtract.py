@@ -1,4 +1,8 @@
-from sorted import subtract_sorted_iterators
+import itertools
+
+import pytest
+
+from sorted import subtract_sorted_iterators, Sorted, DirectionMismatchError
 
 
 def test_no_key():
@@ -32,3 +36,16 @@ def test_with_repeats():
     r = subtract_sorted_iterators(s1, s2)
 
     assert list(r) == [1, 3]
+
+
+def test_sub():
+    s1 = Sorted(range(10))
+    s2 = Sorted(itertools.count())
+
+    result = s1 - s2
+    assert list(result) == []
+
+
+def test_sub_reverse_mismatch():
+    with pytest.raises(DirectionMismatchError):
+        Sorted(itertools.count()) - Sorted(itertools.count(), reverse=True)

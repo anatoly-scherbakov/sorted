@@ -121,7 +121,7 @@ class DirectionMismatchError(Exception):
 
     def __str__(self):
         count = len(self.sorted_iterables)
-        return f'''
+        return f'''\
 Given {count} iterables are incompatible because their sorting directions are
 unequal.
 
