@@ -22,7 +22,9 @@ setuptools.setup(
     extras_require={
         'dev': [
             'pytest',
-            'coverage'
+            'coverage',
+            'mypy',
+            'black'
         ]
     },
     classifiers=[

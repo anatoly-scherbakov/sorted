@@ -35,3 +35,7 @@ def test_key_function_mismatch():
             Sorted([1, 2, 3]),
             Sorted(['c', 'bb', 'aaa'], key=len)
         )
+
+
+def test_add():
+    assert list(Sorted([0, 1, 2]) + Sorted([3, 4])) == [0, 1, 2, 3, 4]

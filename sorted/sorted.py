@@ -76,6 +76,14 @@ class Sorted(Iterable[T]):
             reverse=self.reverse
         )
 
+    def __eq__(self, other: 'Sorted[T]') -> bool:
+        return (
+            isinstance(other, Sorted)
+            and self.iterable == other.iterable
+            and self.key == other.key
+            and self.reverse == other.reverse
+        )
+
 
 def merge(*sorted_iterables: Sorted[T]) -> Sorted[T]:
     """Merge two or more iterators which are known to be sorted."""
